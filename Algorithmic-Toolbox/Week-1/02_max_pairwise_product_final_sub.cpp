@@ -2,18 +2,8 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-int MaxPairwiseProduct_Naive(const vector<int>& numbers){
-    long long product=0;
-    int size=numbers.size();//determining vectors size
-    //Multiplying pairs
-    for(int i=0;i<size;i++){
-        for(int j=i+1;j<size;j++){
-            product=max(product,(long long)(numbers[i]*numbers[j]));
-        }
-    }
-    return product;
-}
-int MaxPairwiseProduct_Fast(const vector<int>& numbers){
+
+int64_t MaxPairwiseProduct_Fast(const vector<int>& numbers){
     int size=numbers.size();//determining vectors size
     //Finding First maximum number
     int maxIndex=-1;
@@ -30,7 +20,7 @@ int MaxPairwiseProduct_Fast(const vector<int>& numbers){
     }
     //cout<<"Second Max-"<<secondMaxIndex<<endl;
     //cout<<"Index-Fast:"<<maxIndex<<" "<<secondMaxIndex<<"\n";
-    return ((long long)numbers[maxIndex])*numbers[secondMaxIndex];
+    return ((int64_t)numbers[maxIndex])*numbers[secondMaxIndex];
 }
 int main(){
     //Taking input from user and storing into a vector
@@ -41,11 +31,11 @@ int main(){
         cin>>numbers[i];
     }
 
-    long long product1=0,product2=0;
-    product1=MaxPairwiseProduct_Naive(numbers);
+    
+    int64_t product=MaxPairwiseProduct_Fast(numbers);
     //to check a large dataset
     //product2=MaxPairwiseProduct(vector<int>(100000,0));
-    cout<<product1<<endl;
+    cout<<product<<endl;
     //cout<<product2<<endl;
     return 0;
 }
